@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FirstRain Mobile</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;"/>
+    <meta name="format-detection" content="telephone=no">
+    <meta charset="utf-8">
+
+    <link href="jquery.mobile-1.0.1.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="css/style.css" type="text/css"/>
+    <link rel="stylesheet" href="css/documentDetails.css" type="text/css"/>
+    <link rel="stylesheet" href="css/scrollerConfig.css" type="text/css"/>
+
+    <script type="text/javascript" charset="utf-8" src="phonegap-1.4.1.js"></script>
+    <!--<script type="text/javascript" charset="utf-8" src="jquery-1.6.4.min.js"></script>-->
+    <script type="text/javascript" src="js/libraries/jquery-1.6.js"></script>
+    <script type="text/javascript" charset="utf-8" src="jquery.mobile-1.0.1.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/iscroll.js"></script>
+    <script type="text/javascript" src="js/globalVars.js"></script>
+    <script type="text/javascript" src="js/ajaxFunctions.js"></script>
+    <script type="text/javascript" src="js/testJSON/loginSection.js"></script>
+    <script type="text/javascript" src="js/testJSON/landingPageJSON.js"></script>
+    <script type="text/javascript" src="js/testJSON/documentDetailsJSON.js"></script>
+    <script type="text/javascript" src="js/scrollerConfig.js"></script>
+    <script type="text/javascript" src="js/menuOptions.js"></script>
+</head>
+
+<body>
+<!--Main Header-->
+<div class="customheader">
+    <div class="headerName">
+        <div class="companyNameHeader">FirstRain</div>
+        <div class="menuArea">
+            <!--<div id="openMenu"><img src="images/menu.png" alt="Menu" height="30"/></div>-->
+            <!--<a href="" data-rel="back" onclick='clearDocumentScroll()'>-->
+            <!--<img src="images/backButton.png" alt="Go Back"/>-->
+            <!--</a>-->
+        </div>
+    </div>
+</div>
+
+<!--<div class="customheader">-->
+<!--<div class="headerName">-->
+<!--<div id="openMenu"><img src="images/menu.png" alt="Menu" height="30"/></div>-->
+<!--FirstRain-->
+<!--</div>-->
+<!--</div>-->
+
+<!--<div class="customheader">-->
+<!--<div class="headerName">FirstRain</div>-->
+<!--</div>-->
+
+<div data-role="page" id="firstrainLoginPage"
+     style="background:-webkit-gradient(linear, center top, center bottom, from(#008BBA), to(#003198));">
+    <!--<div class="customheader">-->
+    <!--<div class="headerName">FirstRain</div>-->
+    <!--</div>-->
+    <div class='splashHeader' style="margin: 50px 0px 0px 0px"><h1>FirstRain</h1></div>
+
+    <div data-role="content">
+        <ul data-role="listview" data-inset="true" id="userPasslistview" data-theme="d">
+            <li style="padding:2px 0 0 2px;">
+                <input type="text" autocorrect="off" autocapitalize="off" id="usernameInput" placeholder="Username"
+                       data-role="none" class="inputBox-class"/>
+            </li>
+            <li style="padding:2px 0 0 2px;">
+                <input type="password" autocorrect="off" autocapitalize="off" id="truePWInput" placeholder="Password"
+                       data-role="none" class="inputBox-class"/>
+            </li>
+        </ul>
+        <div data-role="none" id="signinButton" class="buttonRegular">Sign in</div>
+        <div class='loadingProgressMessage' id="signInLoading"
+             style="text-align:center;text-shadow:none;visibility: hidden; font-weight:bold; color: #f0f0f0;">
+            <img src='images/ajax-loader.gif'/></div>
+        <div style="height:30px;text-align:center;line-height:30px">
+            <div style="text-shadow:none;display:none;font-weight:bold;" id="loginFailedMessage">SIGN IN FAILED. PLEASE
+                TRY AGAIN.
+            </div>
+        </div>
+
+        <div align="center" style="width:100%;margin:auto">
+            <div data-role="none" class="homeLinks" id="forgotPassword" onclick="modalbox()">Forgot Password</div>
+            <div style="text-align:center;color:#fff;text-shadow:none;padding-top:20px;width:80%;margin:auto">Welcome to
+                FirstRain Mobile.<br/>If you are a subscriber, please enter your FirstRain Username and Password.
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div data-role="page" id="homePage">
+    <!--<div class="customheader">-->
+    <!--<div class="headerName">-->
+    <!--<div id="openMenu"><img src="images/menu.png" alt="Menu" height="30"/></div>-->
+    <!--FirstRain-->
+    <!--</div>-->
+    <!--</div>-->
+    <div id="menu">
+        <ul id="menuItems" class="landingPageContentArea">
+            <li class="menuItems">
+                <div style="padding:10px;"><label style="font-size:14px;text-shadow:none;">Home</label><label
+                        style="float:right;"><img
+                        src="img/r-icon_carrot.png" style="height:24px"/></label></div>
+            </li>
+            <li class="menuItems">
+                <div style="padding:10px;"><label style="font-size:14px;text-shadow:none;">Monitors</label><label
+                        style="float:right;"><img
+                        src="img/r-icon_carrot.png" style="height:24px"/></label></div>
+            </li>
+            <li class="menuItems">
+                <div style="padding:10px;"><label style="font-size:14px;text-shadow:none;">Search</label><label
+                        style="float:right;"><img
+                        src="img/r-icon_carrot.png" style="height:24px"/></label></div>
+            </li>
+            <li class="menuItems">
+                <div style="padding:10px;"><label style="font-size:14px;text-shadow:none;">BookMarks</label><label
+                        style="float:right;"><img
+                        src="img/r-icon_carrot.png" style="height:24px"/></label></div>
+            </li>
+            <li class="menuItems">
+                <div style="padding:10px;"><label style="font-size:14px;text-shadow:none;">Account</label><label
+                        style="float:right;"><img
+                        src="img/r-icon_carrot.png" style="height:24px"/></label></div>
+            </li>
+        </ul>
+    </div>
+    <div id="landingPage">
+        <div data-role="content" style="margin: 35px 0px 0px 0px">
+            <div class='monitorTeaser' id="docArea" style="padding-bottom:10px;">
+                <h3 class="screenSubHeader bg_red">FirstReads<label style="float:right;"><span id="currentDoc">1</span>
+                    to
+                    <span id="docLength">40</span> </label></h3>
+
+                <div id="wrapper" class="landingPageContentArea">
+                    <div id="scroller">
+                        <ul id="thelist">
+
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class='monitorTeaser' style="padding-bottom:2px;">
+                <div class='touchable showAllMonitorsButton'>All Monitors</div>
+                <h3 class="screenSubHeader">Recently Active Monitors</h3>
+                <ul id="activeMonitorList" class="landingPageContentArea">
+                    <li style="padding:2px 0 0 2px;">
+                        <div style="padding:10px;"><label style="font-size:14px;text-shadow:none;">Tech</label><label
+                                style="float:right;"><img src='img/mail_icon_red.png' style="height:24px"/><img
+                                src="img/r-icon_carrot.png" style="height:24px"/></label></div>
+                    </li>
+                    <li style="padding:2px 0 0 2px;">
+                        <div style="padding:10px;"><label style="font-size:14px;text-shadow:none;">Tech</label><label
+                                style="float:right;"><img src='img/mail_icon_red.png' style="height:24px"/><img
+                                src="img/r-icon_carrot.png" style="height:24px"/></label></div>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Document Details page starts -->
+<div data-role="page" id="documentDetailsPage">
+    <!--<div class="customheader">-->
+    <!--<div class="headerName">-->
+    <!--<div style="margin: 0px">FirstRain</div>-->
+    <!--<div style="float: left; padding: 0px 0px 0px 10px; margin: -22px 0px 0px 0px">-->
+    <!--<a href="" data-rel="back" onclick='clearDocumentScroll()'>-->
+    <!--<img src="images/backButton.png" alt="Go Back"/>-->
+    <!--</a>-->
+    <!--</div>-->
+    <!--</div>-->
+
+    <!--</div>-->
+
+    <div data-role="content" class="online_info_container" style="margin: 39px 0px 0px 0px;">
+
+
+        <div class="bg_red">First Reads</div>
+        <div class="newscontainer" style="height:320px;">
+            <div id="documentDetailsWrapper">
+                <div id="documentDetailsScroller">
+                    <div class="news_content">
+                        <div class="news_heading" id="documentTitle">Online Information &#38; Content Service Trends
+                        </div>
+
+                        <div class="source_container">
+                            <img src="" id="documentIcon" style="float:left" alt="Icon"/>
+
+                            <div class="source_name" id="documentSourceName">
+                                Mashable
+                            </div>
+
+                            <div class="date">Wed, May 2</div>
+                        </div>
+                    </div>
+                    <div class="news_info" id="documentSummary">Uploaded by First Rain Business Web
+                        Get the FirstRain for iPad App today from the iTunes store or at http://firstra.in/ ipadApp, and
+                        get the
+                        customer
+                    </div>
+                    <div class="related_item_container documentRelatedContent">
+                        <div class="title_red">RELATED CONTENT</div>
+                        <ul id="documentRelatedContent"></ul>
+                    </div>
+
+                    <div class="related_item_container">
+                        <div class="title_red">RELATED TWEETS</div>
+                        <div class="tweet">
+                            <div class="tweet_img"><img src="breaking_news.jpg"></div>
+                            <div class="tweet_info">Get the FirstRain for iPad App today from the iTunes store or at <a
+                                    href="#">http://firstra.in/</a>
+                                ipadApp, and get the customer<br/>
+                                <span class="tweet_source">http://t.co/YKJC#gPc</span>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="related_item_container documentMentionedCompanies">
+                        <div class="title_red">COMPANIES MENTIONED</div>
+                        <ul id="documentMentionedCompanies"></ul>
+
+                    </div>
+                    <div class="related_item_container documentMentionedTopics">
+                        <div class="title_red">TOPICS MENTIONED</div>
+                        <ul id="documentMentionedTopics"></ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="bottom_action_button">
+            <div class="grey_btn_left">Email</div>
+            <div class="grey_btn_right">Open</div>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>
